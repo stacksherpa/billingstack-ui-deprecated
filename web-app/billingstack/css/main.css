@@ -1,0 +1,9 @@
+div#application {
+	padding-top: 60px;
+}
+div#merchant {
+	padding-top: 30px;
+}
+.well form {
+	margin-bottom: 0;
+}
