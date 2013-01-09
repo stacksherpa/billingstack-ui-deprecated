@@ -4,6 +4,9 @@ div#application {
 div#merchant {
 	padding-top: 30px;
 }
-.well form {
+.well form, .well .nav {
 	margin-bottom: 0;
+}
+.fit {
+	width : 1px;
 }

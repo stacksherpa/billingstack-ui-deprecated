@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Customer <small></small></h1>
+  <h1>Customer <small>Invoice</small></h1>
 </div>
 <g:applyLayout name="customer">
   <div class="well">

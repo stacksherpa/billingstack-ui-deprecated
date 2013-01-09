@@ -1,11 +1,11 @@
 <div class="page-header">
-  <h1>Merchant <small>Users</small></h1>
+  <h1>Customer <small>Subscriptions</small></h1>
 </div>
-<g:applyLayout name="settings">
+<g:applyLayout name="customer">
   <div class="well">
     <div class="row-fluid">
       <div class="pull-left">
-        <a href="#/users/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create User</a>
+        <a href="#/customers/1/subscriptions/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Subscription</a>
       </div>
       <div class="pull-right">
         <a data-ng-click="refresh()" class="btn"><i class="icon-refresh"></i> Refresh</a>
@@ -22,7 +22,7 @@
     <tbody>
       <tr>
         <td><input type="checkbox" /></td>
-        <td><a href="#/user/1">transaction.1</a></td>
+        <td><a href="#/customers/1/subscriptions/1">subscription.1</a></td>
       </tr>
     </tbody>
   </table>

@@ -8,18 +8,17 @@
       </a>
       <a href="#" class="brand">BillingStack</a>
       <div class="nav-collapse collapse">
-				<ul class="nav pull-right">
-          <li>
-						<a href="${createLink(controller : 'application', action : 'signOut')}"><i class="icon-off"></i> Sign Out</a>
-					</li>
+        <ul class="nav pull-right">
+          <li><a href="#/settings"><i class="icon-cog"></i> Settings</a></li>
+          <li><a href="${createLink(controller : 'application', action : 'signOut')}"><i class="icon-off"></i> Sign Out</a></li>
         </ul>
         <ul class="nav">
           <li><a href="#/customers">Customers</a></li>
           <li><a href="#/products">Products</a></li>
           <li><a href="#/plans">Plans</a></li>
-					<li><a href="#/subscriptions">Subscriptions</a></li>
-					<li><a href="#/invoices">Invoices</a></li>
-					<li><a href="#/transactions">Transactions</a></li>
+          <li><a href="#/subscriptions">Subscriptions</a></li>
+          <li><a href="#/invoices">Invoices</a></li>
+          <li><a href="#/transactions">Transactions</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

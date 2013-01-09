@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Product <small></small></h1>
+  <h1>Customer <small>Create</small></h1>
 </div>
 <div class="well">
   <form data-ng-submit="save()">
