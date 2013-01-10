@@ -41,6 +41,9 @@
     <script type="text/ng-template" id="templates/plans">
       <g:render template="/templates/plans" />
     </script>
+		<script type="text/ng-template" id="templates/plan_create">
+      <g:render template="/templates/plan_create" />
+    </script>
 		<script type="text/ng-template" id="templates/plan">
       <g:render template="/templates/plan" />
     </script>

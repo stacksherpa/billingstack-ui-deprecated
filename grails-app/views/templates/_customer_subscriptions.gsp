@@ -16,13 +16,13 @@
     <thead>
       <tr>
         <th class="fit"><br /></th>
-        <th>Name</th>
+        <th>Plan</th>
       </tr>
     </thead>
     <tbody>
       <tr data-ng-repeat="item in items">
 	      <td><input type="checkbox" /></td>
-	      <td><a href="#/customers/{{params.customer}}/subscriptions/{{item.id}}">Plan {{item.plan.id}}</a></td>
+	      <td><a href="#/customers/{{params.customer}}/subscriptions/{{item.id}}">{{item.plan.id}}</a></td>
 	    </tr>
     </tbody>
   </table>

@@ -1,3 +1,6 @@
+html {
+	overflow-y: scroll;
+}
 div#application {
 	padding-top: 60px;
 }

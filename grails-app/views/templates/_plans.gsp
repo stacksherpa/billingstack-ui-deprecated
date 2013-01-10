@@ -4,7 +4,7 @@
 <div class="well">
   <div class="row-fluid">
     <div class="pull-left">
-      <a href="#/plans/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Plan</a>
+      <a href="#/plans/create" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Plan</a>
     </div>
     <div class="pull-right">
       <a data-ng-click="refresh()" class="btn"><i class="icon-refresh"></i> Refresh</a>

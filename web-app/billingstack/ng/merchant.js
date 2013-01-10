@@ -11,6 +11,7 @@ var merchant = angular.module('merchant',[])
       .when('/products',{templateUrl : 'templates/products', controller : "ProductsCtrl"})
       .when('/products/:product',{templateUrl : 'templates/product', controller : "ProductCtrl"})
       .when('/plans',{templateUrl : 'templates/plans', controller : "PlansCtrl"})
+			.when('/plans/create',{templateUrl : 'templates/plan_create', controller : "PlanCtrl"})
       .when('/plans/:plan',{templateUrl : 'templates/plan', controller : "PlanCtrl"})
       .when('/subscriptions',{templateUrl : 'templates/subscriptions', controller : "SubscriptionsCtrl"})
       .when('/subscriptions/:subscription',{templateUrl : 'templates/subscription', controller : "SubscriptionCtrl"})
@@ -217,19 +218,64 @@ var merchant = angular.module('merchant',[])
   }])
   .controller('PlanCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      if($scope.params.plan == "0") {
+      if(!$scope.params.plan) {
 				$scope.item = {
 					name : "plan.0",
 					title : "Plan 0",
 					description : "My first Plan",
+					metadata : {
+						quotas : [
+								{label : "gigabytes", key : "gigabytes", value : 1000},
+								{label : "metadata_items", key : "gigabytes", value : 128},
+								{label : "injected_files", key : "gigabytes", value : 5},
+								{label : "security_group_rules", key : "gigabytes", value : 20},
+								{label : "volumes", key : "gigabytes", value : 10},
+								{label : "instances", key : "gigabytes", value : 10},
+								{label : "security_groups", key : "gigabytes", value : 10},
+								{label : "cores", key : "cores", value : 20},
+								{label : "floating_ips", key : "floating_ips", value : 10},
+								{label : "ram", key : "floating_ips", value : 51200},
+								{label : "key_pairs", key : "floating_ips", value : 100},
+								{label : "injected_file_content_bytes", key : "floating_ips", value : 10240},
+								{label : "injected_file_path_bytes", key : "floating_ips", value : 255},
+						]
+					}
 				}
 			} else {
 				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/products')
+					.success(function(data) {
+						$scope.products = data;
+						$scope.searching = false;
+					})
 				$http.get($scope.config.endpoint+'/plans/'+$scope.params.plan)
 					.success(function(data) {
 						$scope.item = data;
 						$scope.searching = false;
 					})
+				
+				$scope.addRule = function(product, rule) {
+					if(!product.rules) {
+						product.rules = []
+					}
+					product.rules.push(rule)
+				}
+				
+				$scope.removeRule = function(product, index) {
+					product.rules.splice(index,1)
+				}
+				
+				$scope.addRange = function(rule, range) {
+					if(!rule.ranges) {
+						rule.ranges = []
+					}
+					rule.ranges.push(range)
+				}
+				
+				$scope.removeRange = function(rule, index) {
+					rule.ranges.splice(index,1)
+				}
+				
 			}
     }
     $scope.save = function() {
@@ -247,7 +293,15 @@ var merchant = angular.module('merchant',[])
 		$scope.refresh()
   }])
   .controller('SubscriptionsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
-    
+    $scope.refresh = function() {
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/subscriptions')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
   }])
   .controller('SubscriptionCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
@@ -281,7 +335,15 @@ var merchant = angular.module('merchant',[])
 		$scope.refresh()
   }])
   .controller('InvoicesCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
-    
+    $scope.refresh = function() {
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/invoices')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
   }])
   .controller('InvoiceCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
@@ -315,7 +377,15 @@ var merchant = angular.module('merchant',[])
 		$scope.refresh()
   }])
   .controller('TransactionsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
-    
+    $scope.refresh = function() {
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/transactions')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
   }])
   .controller('TransactionCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
@@ -614,3 +684,14 @@ var merchant = angular.module('merchant',[])
 			}
 		}
   }])
+	.filter('checked', function () {
+		return function (array) {
+			if(array) {
+				return array.filter(function(el) {
+					return el.checked
+				})
+			} else {
+				return []
+			}
+		};
+	})

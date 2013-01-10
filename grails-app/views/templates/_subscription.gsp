@@ -7,36 +7,30 @@
       <legend>General</legend>
       <div class="row-fluid">
         <div class="span12">
-          <label for="name">Name</label>
-          <input id="name" type="text" data-ng-model="item.name" class="span12" />
+          <label for="billing_day">Billing Day</label>
+          <input id="billing_day" type="text" data-ng-model="item.billing_day" class="span12" />
         </div>
       </div>
       <div class="row-fluid">
         <div class="span12">
-          <label for="title">Title</label>
-          <input id="title" type="text" data-ng-model="item.title" class="span12" />
+          <label for="resource">Resource</label>
+          <input id="resource" type="text" data-ng-model="item.resource" class="span12" />
         </div>
       </div>
-      <div class="row-fluid">
-        <div class="span12">
-          <label for="description">Description</label>
-          <textarea id="description" data-ng-model="item.description" class="span12"></textarea>
-        </div>
-      </div>
-			<table class="table table-stripped plans">
-			  <thead>
-			    <tr>
-			      <th class="fit"><br /></th>
-			      <th>Name</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr data-ng-repeat="item in plans">
-			      <td><input type="radio" /></td>
-			      <td>{{item.title}}</td>
-			    </tr>
-			  </tbody>
-			</table>
+      <table class="table table-stripped plans">
+        <thead>
+          <tr>
+            <th class="fit"><br /></th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="plan in plans">
+            <td><input type="radio" data-ng-model="item.plan.id" value="{{plan.id}}"/></td>
+            <td>{{plan.title}}</td>
+          </tr>
+        </tbody>
+      </table>
       <div class="row-fluid">
         <div class="pull-left">
           <a href="#/subscriptions">Cancel</a>

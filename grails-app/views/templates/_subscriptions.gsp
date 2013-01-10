@@ -15,13 +15,15 @@
   <thead>
     <tr>
       <th class="fit"><br /></th>
-      <th>Name</th>
+      <th>Customer</th>
+			<th>Plan</th>
     </tr>
   </thead>
   <tbody>
     <tr data-ng-repeat="item in items">
       <td><input type="checkbox" /></td>
-      <td><a href="#/subscriptions/{{item.id}}">{{item.title}}</a></td>
+			<td><a href="#/customers/{{item.customer.id}}">{{item.customer.id}}</a></td>
+      <td><a href="#/subscriptions/{{item.id}}">{{item.plan.id}}</a></td>
     </tr>
   </tbody>
 </table>
