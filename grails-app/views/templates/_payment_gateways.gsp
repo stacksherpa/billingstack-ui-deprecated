@@ -20,9 +20,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr data-ng-repeat="item in items">
         <td><input type="checkbox" /></td>
-        <td><a href="#/payment-gateways/1">payment-gateway.1</a></td>
+        <td><a href="#/payment-gateways/{{item.id}}">{{item.title}}</a></td>
       </tr>
     </tbody>
   </table>

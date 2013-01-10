@@ -19,9 +19,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr data-ng-repeat="item in items">
       <td><input type="checkbox" /></td>
-      <td><a href="#/subscriptions/1">subscription.1</a></td>
+      <td><a href="#/subscriptions/{{item.id}}">{{item.title}}</a></td>
     </tr>
   </tbody>
 </table>

@@ -20,10 +20,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td><a href="#/providers/1">provider.1</a></td>
-      </tr>
+      <tr data-ng-repeat="item in items">
+	      <td><input type="checkbox" /></td>
+	      <td><a href="#/providers/{{item.id}}">{{item.title}}</a></td>
+	    </tr>
     </tbody>
   </table>
   <g:render template="/templates/pagination" />

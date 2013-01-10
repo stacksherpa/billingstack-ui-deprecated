@@ -35,15 +35,46 @@ var merchant = angular.module('merchant',[])
     $scope.params = $routeParams;
     $scope.config = config;
   }])
-  .controller('PaymentGatewaysCtrl', ['$scope','$location',function($scope,$location) {
-    
-  }])
-  .controller('PaymentGatewayCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('PaymentGatewaysCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/payment-gateways')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
+  }])
+  .controller('PaymentGatewayCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      if($scope.params.payment_gateway == 0) {
+				$scope.item = {
+					name : "braintree",
+					title : "Braintree",
+					description : "Braintree Payments",
+					is_default : true,
+					metadata : {
+						merchant_id : "",
+						environment : "sandbox",
+						public_key : "",
+						private_key : ""
+					}
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/payment-gateways/'+$scope.params.payment_gateway)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/payment-gateways')
+			$http.post($scope.config.endpoint+'/payment-gateways', $scope.item)
+				.success(function(data) {
+					$location.path('/payment-gateways')
+				})
     }
     $scope.update = function() {
       $location.path('/payment-gateways')
@@ -51,16 +82,33 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/payment-gateways')
     }
+		$scope.refresh()
   }])
-  .controller('ProvidersCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('ProvidersCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     
   }])
-  .controller('ProviderCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('ProviderCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+      if($scope.params.provider == "0") {
+				$scope.item = {
+					name : "openstack",
+					title : "OpenStack",
+					description : "OpenStack IaaS Platform",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/providers/'+$scope.params.provider)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/providers')
+      $http.post($scope.config.endpoint+'/providers', $scope.item)
+				.success(function(data) {
+					$location.path('/providers')
+				})
     }
     $scope.update = function() {
       $location.path('/providers')
@@ -68,16 +116,33 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/providers')
     }
+		$scope.refresh()
   }])
-  .controller('UsersCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('UsersCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     
   }])
-  .controller('UserCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('UserCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+      if($scope.params.user == "0") {
+				$scope.item = {
+					username : "luis.gervaso",
+					password : "secret0",
+					password2 : "secret0",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/users/'+$scope.params.user)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/users')
+      $http.post($scope.config.endpoint+'/users', $scope.item)
+				.success(function(data) {
+					$location.path('/users')
+				})
     }
     $scope.update = function() {
       $location.path('/users')
@@ -85,16 +150,41 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/users')
     }
+		$scope.refresh()
   }])
-  .controller('ProductsCtrl', ['$scope','$location',function($scope,$location) {
-    
-  }])
-  .controller('ProductCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('ProductsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/products')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
+  }])
+  .controller('ProductCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      if($scope.params.product == "0") {
+				$scope.item = {
+					name : "storage",
+					title : "Storage",
+					description : "Storage (GB)",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/products/'+$scope.params.product)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/products')
+      $http.post($scope.config.endpoint+'/products', $scope.item)
+				.success(function(data) {
+					$location.path('/products')
+				})
     }
     $scope.update = function() {
       $location.path('/products')
@@ -102,16 +192,33 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/products')
     }
+		$scope.refresh()
   }])
-  .controller('PlansCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('PlansCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     
   }])
-  .controller('PlanCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('PlanCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+      if($scope.params.plan == "0") {
+				$scope.item = {
+					name : "plan.0",
+					title : "Plan 0",
+					description : "My first Plan",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/providers/'+$scope.params.plan)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/plans')
+      $http.post($scope.config.endpoint+'/plans', $scope.item)
+				.success(function(data) {
+					$location.path('/plans')
+				})
     }
     $scope.update = function() {
       $location.path('/plans')
@@ -119,16 +226,33 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/plans')
     }
+		$scope.refresh()
   }])
-  .controller('SubscriptionsCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('SubscriptionsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     
   }])
-  .controller('SubscriptionCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('SubscriptionCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+      if($scope.params.subscription == "0") {
+				$scope.item = {
+					name : "subscription.0",
+					title : "Subscription 0",
+					description : "My first Subscription",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/subscriptions/'+$scope.params.subscription)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/subscriptions')
+      $http.post($scope.config.endpoint+'/subscriptions', $scope.item)
+				.success(function(data) {
+					$location.path('/subscriptions')
+				})
     }
     $scope.update = function() {
       $location.path('/subscriptions')
@@ -136,16 +260,33 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/subscriptions')
     }
+		$scope.refresh()
   }])
-  .controller('InvoicesCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('InvoicesCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     
   }])
-  .controller('InvoiceCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('InvoiceCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+      if($scope.params.invoice == "0") {
+				$scope.item = {
+					name : "invoice.0",
+					title : "Invoice 0",
+					description : "My first Invoice",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/invoices/'+$scope.params.subscription)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/invoices')
+      $http.post($scope.config.endpoint+'/invoices', $scope.item)
+				.success(function(data) {
+					$location.path('/invoices')
+				})
     }
     $scope.update = function() {
       $location.path('/invoices')
@@ -153,16 +294,33 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/invoices')
     }
+		$scope.refresh()
   }])
-  .controller('TransactionsCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('TransactionsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     
   }])
-  .controller('TransactionCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('TransactionCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+      if($scope.params.transaction == "0") {
+				$scope.item = {
+					name : "transaction.0",
+					title : "Transaction 0",
+					description : "My first Transaction",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/transactions/'+$scope.params.transaction)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/transactions')
+      $http.post($scope.config.endpoint+'/transactions', $scope.item)
+				.success(function(data) {
+					$location.path('/transactions')
+				})
     }
     $scope.update = function() {
       $location.path('/transactions')
@@ -170,16 +328,46 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/transactions')
     }
+		$scope.refresh()
   }])
-  .controller('CustomersCtrl', ['$scope','$location',function($scope,$location) {
-    
+  .controller('CustomersCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+		$scope.refresh = function() {
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/customers')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
   }])
-  .controller('CustomerCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('CustomerCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+      if(!$scope.params.customer) {
+				$scope.item = {
+					name : "woorea",
+					language : "EN",
+					currency : "USD",
+					user : {
+						username : "luis.gervaso",
+						password : "secret0",
+						password2 : "secret0"
+					}
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
-      $location.path('/customers')
+			$http.post($scope.config.endpoint+'/customers', $scope.item)
+				.success(function(data) {
+					$location.path('/customers')
+				})
     }
     $scope.update = function() {
       $location.path('/customers')
@@ -187,13 +375,35 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/customers')
     }
+		$scope.refresh()
   }])
-  .controller('CustomerUsersCtrl', ['$scope','$location',function($scope,$location) {
-    
-  }])
-  .controller('CustomerUserCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('CustomerUsersCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/users')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
+  }])
+  .controller('CustomerUserCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      if($scope.params.user == "0") {
+				$scope.item = {
+					username : "luis.gervaso",
+					password : "secret0",
+					password2 : "secret0",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/users/'+$scope.params.user)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
       $location.path('/customers/'+$scope.params.customer+'/users')
@@ -204,13 +414,35 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/customers/'+$scope.params.customer+'/users')
     }
+		$scope.refresh()
   }])
-  .controller('CustomerSubscriptionsCtrl', ['$scope','$location',function($scope,$location) {
-    
-  }])
-  .controller('CustomerSubscriptionCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('CustomerSubscriptionsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/subscriptions')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
+  }])
+  .controller('CustomerSubscriptionCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      if($scope.params.subscription == "0") {
+				$scope.item = {
+					name : "subscription.0",
+					title : "Subscription 0",
+					description : "My first Subscription",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/subscriptions/'+$scope.params.subscription)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
       $location.path('/customers/'+$scope.params.customer+'/subscriptions')
@@ -221,13 +453,35 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/customers/'+$scope.params.customer+'/subscriptions')
     }
+		$scope.refresh()
   }])
-  .controller('CustomerInvoicesCtrl', ['$scope','$location',function($scope,$location) {
-    
-  }])
-  .controller('CustomerInvoiceCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('CustomerInvoicesCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/invoices')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
+  }])
+  .controller('CustomerInvoiceCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      if($scope.params.invoice == "0") {
+				$scope.item = {
+					name : "invoice.0",
+					title : "Invoice 0",
+					description : "My first Subscription",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/invoices/'+$scope.params.invoice)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
       $location.path('/customers/'+$scope.params.customer+'/invoices')
@@ -238,13 +492,35 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/customers/'+$scope.params.customer+'/invoices')
     }
+		$scope.refresh()
   }])
-  .controller('CustomerTransactionsCtrl', ['$scope','$location',function($scope,$location) {
-    
-  }])
-  .controller('CustomerTransactionCtrl', ['$scope','$location',function($scope,$location) {
+  .controller('CustomerTransactionsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
-      
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/transactions')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
+  }])
+  .controller('CustomerTransactionCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      if($scope.params.transaction == "0") {
+				$scope.item = {
+					name : "transaction.0",
+					title : "Transaction 0",
+					description : "My first Subscription",
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/transactions/'+$scope.params.subscription)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
     }
     $scope.save = function() {
       $location.path('/customers/'+$scope.params.customer+'/transactions')
@@ -255,4 +531,5 @@ var merchant = angular.module('merchant',[])
     $scope.delete = function() {
       $location.path('/customers/'+$scope.params.customer+'/transactions')
     }
+		$scope.refresh()
   }])

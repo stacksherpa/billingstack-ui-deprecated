@@ -98,7 +98,7 @@
     <r:script>
       merchant.value('config', {
         endpoint : "${session.access.endpoint}",
-        token : "${session.access.token}"
+        token : "${session.access.id}"
       })
       angular.bootstrap(document,['merchant']);
     </r:script>
