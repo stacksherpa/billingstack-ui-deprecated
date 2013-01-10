@@ -47,20 +47,20 @@
       </thead>
       <tbody>
         <tr data-ng-repeat="product in products">
-          <td><input type="checkbox" ng-model="product.checked" /></td>
+          <td><input type="checkbox" ng-model="product.checked" ng-click="refreshProduct(product)" /></td>
           <td>{{product}}</td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="tab-pane" id="pricing">
-    <div data-ng-repeat="product in products | checked">
+    <div data-ng-repeat="product in item.products">
       <h2>{{product.title}}</h2>
       <div class="row-fluid">
         <div class="span4">
           <label>Type</label>
           <select data-ng-model="type" data-ng-options="type for type in ['fixed','volume-range','time-range']"></select>
-          <button class="btn" data-ng-click="addRule(product, {type : type})" style="margin-bottom: 10px">Add Rule</button>
+          <button class="btn" data-ng-click="addRule($event, product, {type : type})" style="margin-bottom: 10px">Add Rule</button>
         </div>
         <div class="span8">
           <h3>Rules</h3>
@@ -77,9 +77,9 @@
                       <th class="fit"><br /></th>
                     </tr>
                     <tr>
-                      <td><input type="text" data-ng-model="range.from" class="span12"/></td>
+                      <td><input type="number" data-ng-model="range.from" class="span12"/></td>
 
-                      <td><input type="text" data-ng-model="range.to" class="span12"/></td>
+                      <td><input type="number" data-ng-model="range.to" class="span12"/></td>
 
                       <td><input type="number" data-ng-model="range.price" class="span12"/></td>
 

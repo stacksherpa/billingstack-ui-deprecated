@@ -93,6 +93,12 @@
 		<script type="text/ng-template" id="templates/customer_subscription">
       <g:render template="/templates/customer_subscription" />
     </script>
+		<script type="text/ng-template" id="templates/customer_usages">
+      <g:render template="/templates/customer_usages" />
+    </script>
+		<script type="text/ng-template" id="templates/customer_usage">
+      <g:render template="/templates/customer_usage" />
+    </script>
 		<script type="text/ng-template" id="templates/customer_invoices">
       <g:render template="/templates/customer_invoices" />
     </script>

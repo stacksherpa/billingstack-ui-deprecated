@@ -17,12 +17,24 @@
       <tr>
         <th class="fit"><br /></th>
         <th>Plan</th>
+				<th class="fit"><br /></th>
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="item in items">
+      <tr data-ng-repeat="item in items" class="subscription">
 	      <td><input type="checkbox" /></td>
 	      <td><a href="#/customers/{{params.customer}}/subscriptions/{{item.id}}">{{item.plan.id}}</a></td>
+				<td class="btn-group">
+					<button data-toggle="dropdown" class="btn dropdown-toggle">Actions <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a href="#/customers/{{params.customer}}/subscriptions/{{item.id}}/usages"><i class="icon-list"></i> Show Usage</a></li>
+						<li><a href="#/customers/{{params.customer}}/subscriptions/{{params.subscription}}/usages/0"><i class="icon-plus"></i> Create Usage</a></li>
+						<li class="divider"></li>
+						<li><a ng-click="bill()"><i class="icon-certificate"></i> Bill Now</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+					</ul>
+				</td>
 	    </tr>
     </tbody>
   </table>
