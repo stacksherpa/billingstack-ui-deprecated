@@ -1,11 +1,11 @@
 <div class="page-header">
-  <h1>Customer <small>Transactions</small></h1>
+  <h1>Customer <small>Payment Methods</small></h1>
 </div>
 <g:applyLayout name="customer">
   <div class="well">
     <div class="row-fluid">
       <div class="pull-left">
-        <a href="#/customers/{{params.customer}}/transactions/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Transaction</a>
+        <a href="#/customers/{{params.customer}}/payment-methods/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Payment Method</a>
       </div>
       <div class="pull-right">
         <a data-ng-click="refresh()" class="btn"><i class="icon-refresh"></i> Refresh</a>
@@ -17,18 +17,20 @@
       <tr>
         <th class="fit"><br /></th>
         <th>ID</th>
-				<th>Invoice</th>
-				<th>Amount</th>
-				<th>Status</th>
+				<th>Type</th>
+				<th>Number</th>
+				<th>Expiration</th>
+				<th class="fit"><br /></th>
       </tr>
     </thead>
     <tbody>
       <tr data-ng-repeat="item in items">
 	      <td><input type="checkbox" /></td>
-	      <td><a href="#/customers/{{params.customer}}/transactions/{{item.id}}">{{item.id}}</a></td>
-				<td><a href="#/customers/{{params.customer}}/invoices/{{item.invoice.id}}">{{item.invoice.id}}</a></td>
-				<td>{{item.amount}}</td>
-				<td>{{item.status}}</td>
+	      <td>{{item.id}}</td>
+				<td>{{item.type}}</td>
+				<td>{{item.number}}</td>
+				<td>{{item.expiration}}</td>
+				<td></td>
 	    </tr>
     </tbody>
   </table>

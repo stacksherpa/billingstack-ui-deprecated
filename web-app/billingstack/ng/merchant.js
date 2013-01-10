@@ -23,6 +23,8 @@ var merchant = angular.module('merchant',[])
       .when('/customers/:customer',{templateUrl : 'templates/customer', controller : "CustomerCtrl"})
       .when('/customers/:customer/users',{templateUrl : 'templates/customer_users', controller : "CustomerUsersCtrl"})
       .when('/customers/:customer/users/:user',{templateUrl : 'templates/customer_user', controller : "CustomerUserCtrl"})
+			.when('/customers/:customer/payment-methods',{templateUrl : 'templates/customer_payment_methods', controller : "CustomerPaymentMethodsCtrl"})
+      .when('/customers/:customer/payment-methods/:payment_method',{templateUrl : 'templates/customer_payment_method', controller : "CustomerPaymentMethodCtrl"})
       .when('/customers/:customer/subscriptions',{templateUrl : 'templates/customer_subscriptions', controller : "CustomerSubscriptionsCtrl"})
       .when('/customers/:customer/subscriptions/:subscription',{templateUrl : 'templates/customer_subscription', controller : "CustomerSubscriptionCtrl"})
       .when('/customers/:customer/invoices',{templateUrl : 'templates/customer_invoices', controller : "CustomerInvoicesCtrl"})
@@ -119,7 +121,15 @@ var merchant = angular.module('merchant',[])
 		$scope.refresh()
   }])
   .controller('UsersCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
-    
+    $scope.refresh = function() {
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/users')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
   }])
   .controller('UserCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
@@ -195,7 +205,15 @@ var merchant = angular.module('merchant',[])
 		$scope.refresh()
   }])
   .controller('PlansCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
-    
+    $scope.refresh = function() {
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/plans')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
   }])
   .controller('PlanCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
@@ -207,7 +225,7 @@ var merchant = angular.module('merchant',[])
 				}
 			} else {
 				$scope.searching = true;
-				$http.get($scope.config.endpoint+'/providers/'+$scope.params.plan)
+				$http.get($scope.config.endpoint+'/plans/'+$scope.params.plan)
 					.success(function(data) {
 						$scope.item = data;
 						$scope.searching = false;
@@ -416,6 +434,49 @@ var merchant = angular.module('merchant',[])
     }
 		$scope.refresh()
   }])
+  .controller('CustomerPaymentMethodsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+			$scope.searching = true;
+			$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/credit-cards')
+				.success(function(data) {
+					$scope.items = data;
+					$scope.searching = false;
+				})
+		}
+		$scope.refresh()
+  }])
+  .controller('CustomerPaymentMethodCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      if($scope.params.payment_method == "0") {
+				$scope.item = {
+						holder : "LUIS",
+						number : "4111111111111111",
+						expiration : "05/2013",
+						cvv : "873"
+				}
+			} else {
+				$scope.searching = true;
+				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/credit-cards/'+$scope.params.payment_method)
+					.success(function(data) {
+						$scope.item = data;
+						$scope.searching = false;
+					})
+			}
+    }
+    $scope.save = function() {
+			$http.post($scope.config.endpoint+'/customers/'+$scope.params.customer+'/credit-cards', $scope.item)
+				.success(function(data) {
+					$location.path('/customers/'+$scope.params.customer+'/payment-methods')
+				})
+    }
+    $scope.update = function() {
+      $location.path('/customers/'+$scope.params.customer+'/payment-methods')
+    }
+    $scope.delete = function() {
+      $location.path('/customers/'+$scope.params.customer+'/payment-methods')
+    }
+		$scope.refresh()
+  }])
   .controller('CustomerSubscriptionsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
 			$scope.searching = true;
@@ -434,6 +495,9 @@ var merchant = angular.module('merchant',[])
 					name : "subscription.0",
 					title : "Subscription 0",
 					description : "My first Subscription",
+					plan:{
+						id : ""
+					}
 				}
 			} else {
 				$scope.searching = true;
@@ -445,7 +509,10 @@ var merchant = angular.module('merchant',[])
 			}
     }
     $scope.save = function() {
-      $location.path('/customers/'+$scope.params.customer+'/subscriptions')
+			$http.post($scope.config.endpoint+'/customers/'+$scope.params.customer+'/subscriptions', $scope.item)
+				.success(function(data) {
+					$location.path('/customers/'+$scope.params.customer+'/subscriptions')
+				})
     }
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/subscriptions')
@@ -484,7 +551,10 @@ var merchant = angular.module('merchant',[])
 			}
     }
     $scope.save = function() {
-      $location.path('/customers/'+$scope.params.customer+'/invoices')
+			$http.post($scope.config.endpoint+'/customers/'+$scope.params.customer+'/invoices', $scope.item)
+				.success(function(data) {
+					$location.path('/customers/'+$scope.params.customer+'/invoices')
+				})
     }
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/invoices')
@@ -515,7 +585,7 @@ var merchant = angular.module('merchant',[])
 				}
 			} else {
 				$scope.searching = true;
-				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/transactions/'+$scope.params.subscription)
+				$http.get($scope.config.endpoint+'/customers/'+$scope.params.customer+'/transactions/'+$scope.params.transaction)
 					.success(function(data) {
 						$scope.item = data;
 						$scope.searching = false;
@@ -532,4 +602,15 @@ var merchant = angular.module('merchant',[])
       $location.path('/customers/'+$scope.params.customer+'/transactions')
     }
 		$scope.refresh()
+  }])
+	.directive('plans', ['$http',function($http) {
+		return {
+			restrict : "C",
+			link : function(scope, element, attrs) {
+				$http.get(scope.config.endpoint+'/plans')
+					.success(function(data) {
+						scope.plans = data;
+					})
+			}
+		}
   }])

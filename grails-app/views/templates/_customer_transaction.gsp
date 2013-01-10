@@ -8,20 +8,26 @@
       <legend>General</legend>
       <div class="row-fluid">
         <div class="span12">
-          <label for="name">Name</label>
-          <input id="name" type="text" data-ng-model="item.name" class="span12" />
+          <label for="id">Name</label>
+          <input id="id" type="text" data-ng-model="item.id" class="span12" />
         </div>
       </div>
       <div class="row-fluid">
         <div class="span12">
-          <label for="title">Title</label>
-          <input id="title" type="text" data-ng-model="item.title" class="span12" />
+          <label for="invoice">Title</label>
+          <input id="invoice" type="text" data-ng-model="item.invoice.id" class="span12" />
         </div>
       </div>
       <div class="row-fluid">
         <div class="span12">
-          <label for="description">Description</label>
-          <textarea id="description" data-ng-model="item.description" class="span12"></textarea>
+          <label for="invoice">Amount</label>
+          <input id="invoice" type="text" data-ng-model="item.amount" class="span12" />
+        </div>
+      </div>
+			<div class="row-fluid">
+        <div class="span12">
+          <label for="invoice">Status</label>
+          <input id="invoice" type="text" data-ng-model="item.status" class="span12" />
         </div>
       </div>
       <div class="row-fluid">

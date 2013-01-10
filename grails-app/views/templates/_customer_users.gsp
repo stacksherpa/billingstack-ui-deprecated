@@ -5,7 +5,7 @@
   <div class="well">
     <div class="row-fluid">
       <div class="pull-left">
-        <a href="#/customers/1/users/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create User</a>
+        <a href="#/customers/{{params.customer}}/users/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create User</a>
       </div>
       <div class="pull-right">
         <a data-ng-click="refresh()" class="btn"><i class="icon-refresh"></i> Refresh</a>

@@ -23,6 +23,20 @@
           <textarea id="description" data-ng-model="item.description" class="span12"></textarea>
         </div>
       </div>
+			<table class="table table-stripped plans">
+			  <thead>
+			    <tr>
+			      <th class="fit"><br /></th>
+			      <th>Name</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr data-ng-repeat="item in plans">
+			      <td><input type="radio" /></td>
+			      <td>{{item.title}}</td>
+			    </tr>
+			  </tbody>
+			</table>
       <div class="row-fluid">
         <div class="pull-left">
           <a href="#/subscriptions">Cancel</a>

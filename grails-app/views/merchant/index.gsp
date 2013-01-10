@@ -71,6 +71,12 @@
 		<script type="text/ng-template" id="templates/customer">
       <g:render template="/templates/customer" />
     </script>
+		<script type="text/ng-template" id="templates/customer_payment_methods">
+      <g:render template="/templates/customer_payment_methods" />
+    </script>
+		<script type="text/ng-template" id="templates/customer_payment_method">
+      <g:render template="/templates/customer_payment_method" />
+    </script>
 		<script type="text/ng-template" id="templates/customer_users">
       <g:render template="/templates/customer_users" />
     </script>
