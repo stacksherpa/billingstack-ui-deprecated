@@ -13,6 +13,12 @@
       </div>
       <div class="row-fluid">
         <div class="span12">
+          <label for="title">Provider</label>
+          <input id="title" type="text" data-ng-model="item.provider" class="span12" />
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
           <label for="title">Title</label>
           <input id="title" type="text" data-ng-model="item.title" class="span12" />
         </div>

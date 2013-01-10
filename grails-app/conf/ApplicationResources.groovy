@@ -6,5 +6,6 @@ modules = {
     resource url:'bootstrap/js/bootstrap.min.js'
     resource url:'billingstack/js/angular.min.js'
     resource url:'billingstack/ng/merchant.js'
+		resource url:'billingstack/js/bootstrap-notify.js'
 	}
 }

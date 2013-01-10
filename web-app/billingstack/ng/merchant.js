@@ -456,6 +456,12 @@ var merchant = angular.module('merchant',[])
 				.success(function(data) {
 					$location.path('/customers')
 				})
+				.error(function(data) {
+					$('.top-right').notify({
+							type : 'error',
+							message: { text: data.error }
+					}).show();
+				})
     }
     $scope.update = function() {
       $location.path('/customers')

@@ -5,6 +5,12 @@
   <form data-ng-submit="save()">
     <fieldset>
       <legend>General</legend>
+			<div class="row-fluid">
+        <div class="span12">
+          <label for="payment_method">Payment Method ID</label>
+          <input id="payment_method" type="text" data-ng-model="item.credit_card.id" class="span12" />
+        </div>
+      </div>
       <div class="row-fluid">
         <div class="span12">
           <label for="billing_day">Billing Day</label>

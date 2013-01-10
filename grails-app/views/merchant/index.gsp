@@ -11,6 +11,7 @@
       
       </div>
     </div>
+		<div class='notifications top-right'></div>
 		<script type="text/ng-template" id="templates/settings">
       <g:render template="/templates/settings" />
     </script>
