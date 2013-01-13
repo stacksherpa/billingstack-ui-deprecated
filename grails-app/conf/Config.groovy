@@ -89,3 +89,4 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+billingstack.endpoint='http://localhost:9090/billingstack'
