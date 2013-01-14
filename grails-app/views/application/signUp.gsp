@@ -13,17 +13,17 @@
             <div class="row-fluid">
               <div class="span12">
                 <label for="name">Name</label>
-                <input id="name" type="text" name="item.name" class="span12" />
+                <input id="name" type="text" name="name" class="span12" />
               </div>
             </div>
             <div class="row-fluid">
               <div class="span6">
                 <label for="title">Language</label>
-                <input id="title" type="text" name="item.language" class="span12" />
+                <input id="title" type="text" name="language" class="span12" />
               </div>
               <div class="span6">
                 <label for="title">Currency</label>
-                <input id="title" type="text" name="item.currency" class="span12" />
+                <input id="title" type="text" name="currency" class="span12" />
               </div>
             </div>
           </fieldset>
@@ -31,11 +31,11 @@
             <legend>User</legend>
             <div class="row-fluid">
               <label for="name">Username</label>
-              <input id="name" type="text" name="item.user.username" class="span12" />
+              <input id="name" type="text" name="user.username" class="span12" />
               <label for="name">Password</label>
-              <input id="name" type="text" name="item.user.password" class="span12" />
+              <input id="name" type="password" name="user.password" class="span12" />
               <label for="name">Confirm Password</label>
-              <input id="name" type="text" name="item.user.password2" class="span12" />
+              <input id="name" type="password" name="user.password2" class="span12" />
             </div>
           </fieldset>
           <div class="row-fluid">
