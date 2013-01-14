@@ -10,6 +10,12 @@
         <form action="${createLink(controller : 'application', action : 'signIn')}" method="POST">
             <fieldset>
             <legend>Sign In</legend>
+							<div class="row-fluid">
+	              <div class="span12">
+	                <label for="username">Merchant Name</label>
+	                <input id="username" type="text" name="merchant" class="span12" />
+	              </div>
+	            </div>
             	<div class="row-fluid">
 	              <div class="span12">
 	                <label for="username">Username</label>
@@ -19,7 +25,7 @@
 	            <div class="row-fluid">
 	              <div class="span12">
 	                <label for="password">Password</label>
-	                <input id="password" type="password" data-ng-model="password" class="span12" />
+	                <input id="password" type="password" name="password" class="span12" />
 	              </div>
 	            </div>
             </fieldset>
