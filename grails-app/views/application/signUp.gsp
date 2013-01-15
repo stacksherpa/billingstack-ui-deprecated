@@ -2,10 +2,13 @@
 <html>
   <head>
     <meta name="layout" content="billingstack"/>
-    <title>BillingStack</title>
+    <title>BillingStack :: Sign Up</title>
   </head>
   <body>
     <div id="application" class="container">
+			<g:if test="${flash.error}">
+				<div class="alert alert-error">${flash.error}</div>
+			</g:if>
       <div class="well">
         <form action="${createLink(controller : 'application', action : 'signUp')}" method="POST">
           <fieldset>
