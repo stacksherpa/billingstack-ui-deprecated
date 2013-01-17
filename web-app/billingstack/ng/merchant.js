@@ -86,7 +86,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/payment-gateways')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/payment-gateways')
     }
     $scope.refresh()
@@ -120,7 +120,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/providers')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/providers')
     }
     $scope.refresh()
@@ -162,7 +162,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/users')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/users')
     }
     $scope.refresh()
@@ -204,7 +204,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/products')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/products')
     }
     $scope.refresh()
@@ -320,7 +320,7 @@ var merchant = angular.module('merchant',[])
           })
       }
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/plans')
     }
     $scope.refresh()
@@ -362,7 +362,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/subscriptions')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/subscriptions')
     }
     $scope.refresh()
@@ -404,7 +404,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/invoices')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/invoices')
     }
     $scope.refresh()
@@ -446,7 +446,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/transactions')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/transactions')
     }
     $scope.refresh()
@@ -499,7 +499,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/customers')
     }
     $scope.refresh()
@@ -538,7 +538,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/users')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/customers/'+$scope.params.customer+'/users')
     }
     $scope.refresh()
@@ -581,7 +581,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/payment-methods')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/customers/'+$scope.params.customer+'/payment-methods')
     }
     $scope.refresh()
@@ -626,7 +626,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/subscriptions')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/customers/'+$scope.params.customer+'/subscriptions')
     }
     $scope.refresh()
@@ -677,7 +677,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/subscriptions')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/customers/'+$scope.params.customer+'/subscriptions')
     }
     $scope.refresh()
@@ -719,7 +719,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/invoices')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/customers/'+$scope.params.customer+'/invoices')
     }
     $scope.refresh()
@@ -758,7 +758,7 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers/'+$scope.params.customer+'/transactions')
     }
-    $scope.delete = function() {
+    $scope.remove = function() {
       $location.path('/customers/'+$scope.params.customer+'/transactions')
     }
     $scope.refresh()

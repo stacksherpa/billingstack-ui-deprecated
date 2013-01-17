@@ -15,13 +15,21 @@
   <thead>
     <tr>
       <th class="fit"><br /></th>
-      <th>Name</th>
+      <th>Title</th>
+			<th>Source</th>
+			<th>Type</th>
+			<th>Measure</th>
+			<th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr data-ng-repeat="item in items">
       <td><input type="checkbox" /></td>
       <td><a href="#/products/{{item.id}}">{{item.title}}</a></td>
+			<td>{{item.source}}</td>
+			<td>{{item.type}}</td>
+			<td>{{item.measure}}</td>
+			<td>{{item.description}}</td>
     </tr>
   </tbody>
 </table>
