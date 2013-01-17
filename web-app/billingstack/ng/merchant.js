@@ -480,6 +480,18 @@ var merchant = angular.module('merchant',[])
             password2 : ""
           }
         }
+				$scope.save = function() {
+		      $http.post($scope.config.endpoint+'/customers', $scope.item)
+		        .success(function(data) {
+		          $location.path('/customers')
+		        })
+		        .error(function(data) {
+		          $('.top-right').notify({
+		              type : 'error',
+		              message: { text: data.error }
+		          }).show();
+		        })
+		    }
       } else {
         $scope.searching = true;
         $http.get($scope.config.endpoint+'/customers/'+$scope.params.customer)
@@ -487,20 +499,21 @@ var merchant = angular.module('merchant',[])
             $scope.item = data;
             $scope.searching = false;
           })
+				$scope.save = function() {
+		      $http.put($scope.config.endpoint+'/customers/'+$scope.item.id, $scope.item)
+		        .success(function(data) {
+		          $location.path('/customers')
+		        })
+		        .error(function(data) {
+		          $('.top-right').notify({
+		              type : 'error',
+		              message: { text: data.error }
+		          }).show();
+		        })
+		    }
       }
     }
-    $scope.save = function() {
-      $http.post($scope.config.endpoint+'/customers', $scope.item)
-        .success(function(data) {
-          $location.path('/customers')
-        })
-        .error(function(data) {
-          $('.top-right').notify({
-              type : 'error',
-              message: { text: data.error }
-          }).show();
-        })
-    }
+    
     $scope.update = function() {
       $location.path('/customers')
     }
