@@ -277,6 +277,11 @@ var merchant = angular.module('merchant',[])
             removeProduct(product)
           }
         }
+
+				$scope.containsProduct = function(product) {
+					var ids = _.pluck($scope.item.products, 'id');
+					return _.contains(ids, product.id);
+				}
         
         $scope.addRule = function($event, product, rule) {
           $event.preventDefault();

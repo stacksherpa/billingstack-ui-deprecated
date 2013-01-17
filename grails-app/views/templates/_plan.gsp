@@ -50,7 +50,7 @@
       </thead>
       <tbody>
         <tr data-ng-repeat="product in products">
-          <td><input type="checkbox" ng-model="product.checked" ng-click="refreshProduct(product)" /></td>
+          <td><input type="checkbox" ng-model="product.checked" ng-click="refreshProduct(product)" ng-checked="containsProduct(product)"/></td>
           <td>{{product.name}}</td>
 					<td>{{product.source}}</td>
 					<td>{{product.type}}</td>
