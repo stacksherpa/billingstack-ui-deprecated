@@ -22,7 +22,6 @@ class ApplicationController {
               password : params.user.password
             ]
           ])
-					println grailsApplication.config.billingstack.endpoint
           def response = http.preparePost(grailsApplication.config.billingstack.endpoint+'/merchants')
             .setBody(builder.toString())
             .execute()
