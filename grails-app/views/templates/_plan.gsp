@@ -62,7 +62,7 @@
   </div>
   <div class="tab-pane" id="pricing">
     <div data-ng-repeat="product in item.products">
-      <h2>{{product.title}}</h2>
+      <h2>{{product.name}}</h2>
       <div class="row-fluid">
         <div class="span4">
           <label>Type</label>
