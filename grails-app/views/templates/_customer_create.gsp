@@ -28,9 +28,9 @@
           <label for="name">Username</label>
           <input id="name" type="text" data-ng-model="item.user.username" class="span12" />
           <label for="name">Password</label>
-          <input id="name" type="text" data-ng-model="item.user.password" class="span12" />
+          <input id="name" type="password" data-ng-model="item.user.password" class="span12" />
           <label for="name">Confirm Password</label>
-          <input id="name" type="text" data-ng-model="item.user.password2" class="span12" />
+          <input id="name" type="password" data-ng-model="item.user.password2" class="span12" />
         </div>
       </fieldset>
       <div class="row-fluid">
