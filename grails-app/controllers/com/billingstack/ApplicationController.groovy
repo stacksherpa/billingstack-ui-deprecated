@@ -22,6 +22,7 @@ class ApplicationController {
               password : params.user.password
             ]
           ])
+					println grailsApplication.config.billingstack.endpoint
           def response = http.preparePost(grailsApplication.config.billingstack.endpoint+'/merchants')
             .setBody(builder.toString())
             .execute()
@@ -48,8 +49,8 @@ class ApplicationController {
             .execute()
             .get()
 					if(response.statusCode == 200) {
-						session.access = slurper.parseText(response.responseBody)
-	          redirect(controller : "merchant")
+						def access = slurper.parseText(response.responseBody)
+	          redirect(controller : "merchant", params : [endpoint : access.endpoint, token : access.id])
 					} else {
 						throw new RuntimeException(slurper.parseText(response.responseBody).error)
 					}

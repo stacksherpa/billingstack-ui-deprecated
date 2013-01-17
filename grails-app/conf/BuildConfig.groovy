@@ -63,3 +63,9 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.1'
     }
 }
+
+grails.server.host = "0.0.0.0"
+//Port to run the embedded servlet container on ("run-app" and "run-war"). Integer.
+grails.server.port.http = 8080
+//Port to run the embedded servlet container on for HTTPS ("run-app --https" and "run-war --https"). Integer.
+grails.server.port.https = 8181
