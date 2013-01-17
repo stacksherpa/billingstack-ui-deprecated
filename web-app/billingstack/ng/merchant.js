@@ -140,9 +140,9 @@ var merchant = angular.module('merchant',[])
     $scope.refresh = function() {
       if($scope.params.user == "0") {
         $scope.item = {
-          username : "luis.gervaso",
-          password : "secret0",
-          password2 : "secret0",
+          username : "",
+          password : "",
+          password2 : "",
         }
       } else {
         $scope.searching = true;
@@ -466,13 +466,13 @@ var merchant = angular.module('merchant',[])
     $scope.refresh = function() {
       if(!$scope.params.customer) {
         $scope.item = {
-          name : "woorea",
-          language : "EN",
+          name : "",
+          language : "en",
           currency : "USD",
           user : {
-            username : "luis.gervaso",
-            password : "secret0",
-            password2 : "secret0"
+            username : "",
+            password : "",
+            password2 : ""
           }
         }
       } else {
@@ -519,9 +519,9 @@ var merchant = angular.module('merchant',[])
     $scope.refresh = function() {
       if($scope.params.user == "0") {
         $scope.item = {
-          username : "luis.gervaso",
-          password : "secret0",
-          password2 : "secret0",
+          username : "",
+          password : "",
+          password2 : "",
         }
       } else {
         $scope.searching = true;
