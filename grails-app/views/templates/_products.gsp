@@ -15,7 +15,7 @@
   <thead>
     <tr>
       <th class="fit"><br /></th>
-      <th>Title</th>
+      <th>Name</th>
 			<th>Source</th>
 			<th>Type</th>
 			<th>Measure</th>
@@ -25,7 +25,7 @@
   <tbody>
     <tr data-ng-repeat="item in items">
       <td><input type="checkbox" /></td>
-      <td><a href="#/products/{{item.id}}">{{item.title}}</a></td>
+      <td><a href="#/products/{{item.id}}">{{item.name}}</a></td>
 			<td>{{item.source}}</td>
 			<td>{{item.type}}</td>
 			<td>{{item.measure}}</td>

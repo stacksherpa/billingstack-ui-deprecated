@@ -43,12 +43,19 @@
       <thead>
         <th class="fit"><br /></th>
         <th>Name</th>
-        <th class="fit"><br /</th>
+				<th>Source</th>
+				<th>Type</th>
+				<th>Measure</th>
+				<th>Description</th>
       </thead>
       <tbody>
         <tr data-ng-repeat="product in products">
           <td><input type="checkbox" ng-model="product.checked" ng-click="refreshProduct(product)" /></td>
-          <td>{{product}}</td>
+          <td>{{product.name}}</td>
+					<td>{{product.source}}</td>
+					<td>{{product.type}}</td>
+					<td>{{product.measure}}</td>
+					<td>{{product.description}}</td>
         </tr>
       </tbody>
     </table>
