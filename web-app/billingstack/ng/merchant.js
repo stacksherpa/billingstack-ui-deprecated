@@ -517,9 +517,6 @@ var merchant = angular.module('merchant',[])
     $scope.update = function() {
       $location.path('/customers')
     }
-    $scope.remove = function() {
-      $location.path('/customers')
-    }
     $scope.refresh()
   }])
   .controller('CustomerUsersCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
@@ -802,6 +799,32 @@ var merchant = angular.module('merchant',[])
           .success(function(data) {
             scope.plans = data;
           })
+      }
+    }
+  }])
+	.directive('plan', ['$http',function($http) {
+    return {
+      restrict : "C",
+      link : function(scope, element, attrs) {
+				scope.remove = function() {
+					$http.delete(scope.config.endpoint+'/plans/'+scope.item.id)
+	          .success(function(data) {
+	            scope.refresh();
+	          })
+				}
+      }
+    }
+  }])
+	.directive('customer', ['$http',function($http) {
+    return {
+      restrict : "C",
+      link : function(scope, element, attrs) {
+        scope.remove = function() {
+					$http.delete(scope.config.endpoint+'/customers/'+scope.item.id)
+	          .success(function(data) {
+	            scope.refresh();
+	          })
+				}
       }
     }
   }])
