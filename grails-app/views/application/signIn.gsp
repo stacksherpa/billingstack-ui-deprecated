@@ -15,8 +15,14 @@
             <legend>Sign In</legend>
               <div class="row-fluid">
                 <div class="span12">
-                  <label for="username">Merchant Name</label>
+                  <label for="username">Merchant ID / Name</label>
                   <input id="username" type="text" name="merchant" class="span12" />
+                </div>
+              </div>
+              <div class="row-fluid">
+                <div class="span12">
+                  <label for="username">Customer ID / Name</label>
+                  <input id="username" type="text" name="customer" class="span12" />
                 </div>
               </div>
               <div class="row-fluid">

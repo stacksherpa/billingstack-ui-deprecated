@@ -40,6 +40,8 @@ class ApplicationController {
           def builder = new groovy.json.JsonBuilder()
           def slurper = new groovy.json.JsonSlurper()
           builder.call([
+              merchant : params.merchant,
+              customer : params.customer,
               username : params.username,
               password : params.password
           ])
@@ -47,12 +49,13 @@ class ApplicationController {
             .setBody(builder.toString())
             .execute()
             .get()
-					if(response.statusCode == 200) {
-						def access = slurper.parseText(response.responseBody)
-	          redirect(controller : "merchant", params : [endpoint : access.endpoint, token : access.id])
-					} else {
-						throw new RuntimeException(slurper.parseText(response.responseBody).error)
-					}
+            println response.responseBody
+          if(response.statusCode == 200) {
+            def access = slurper.parseText(response.responseBody)
+            redirect(controller : "merchant", params : [endpoint : access.endpoint, token : access.id])
+          } else {
+            throw new RuntimeException(slurper.parseText(response.responseBody).error)
+          }
         } catch(e) {
           flash.error = e.message
         }
