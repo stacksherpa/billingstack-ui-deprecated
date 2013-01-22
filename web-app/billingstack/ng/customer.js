@@ -76,10 +76,10 @@ var customer = angular.module('customer',[])
       }
     }
     $scope.save = function() {
-      $location.path('/users')
-    }
-    $scope.update = function() {
-      $location.path('/users')
+      $http.post($scope.config.endpoint+'/users', $scope.item)
+        .success(function(data) {
+          $location.path('/users')
+        })
     }
     $scope.remove = function() {
       $location.path('/users')
