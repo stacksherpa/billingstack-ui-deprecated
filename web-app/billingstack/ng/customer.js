@@ -319,19 +319,6 @@ var customer = angular.module('customer',[])
       }
     }
   }])
-  .directive('customer', ['$http',function($http) {
-    return {
-      restrict : "C",
-      link : function(scope, element, attrs) {
-        scope.remove = function() {
-          $http.delete(scope.config.endpoint+'/customers/'+scope.item.id)
-            .success(function(data) {
-              scope.refresh();
-            })
-        }
-      }
-    }
-  }])
   .filter('checked', function () {
     return function (array) {
       if(array) {
