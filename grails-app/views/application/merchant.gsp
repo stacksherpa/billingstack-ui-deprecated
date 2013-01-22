@@ -76,8 +76,8 @@
     <r:script>
       merchant.value('config', {
 				url : "${resource(file : '/application')}",
-        endpoint : "${params.endpoint}",
-        token : "${params.token}"
+        endpoint : "${session.access.merchant.endpoint}",
+        token : "${session.access.token}"
       })
       angular.bootstrap(document,['merchant']);
     </r:script>

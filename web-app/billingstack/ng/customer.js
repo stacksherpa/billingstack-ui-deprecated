@@ -319,6 +319,17 @@ var customer = angular.module('customer',[])
       }
     }
   }])
+	.directive('plans', ['$http',function($http) {
+    return {
+      restrict : "C",
+      link : function(scope, element, attrs) {
+        $http.get(scope.config.endpoint.substring(0, scope.config.endpoint.indexOf('/customers'))+'/plans')
+          .success(function(data) {
+            scope.plans = data;
+          })
+      }
+    }
+  }])
   .filter('checked', function () {
     return function (array) {
       if(array) {

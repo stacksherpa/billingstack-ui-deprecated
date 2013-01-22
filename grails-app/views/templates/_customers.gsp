@@ -22,7 +22,7 @@
   <tbody>
     <tr data-ng-repeat="item in items" class="customer">
       <td><input type="checkbox" /></td>
-      <td><a href="{{config.url}}/customer?endpoint={{config.endpoint}}&path=/customers/{{item.id}}&token={{config.token}}">{{item.name}}</a></td>
+      <td><a href="{{config.url}}/customer?customer={{item.id}}">{{item.name}}</a></td>
 			<td class="btn-toolbar">
 				<div class="btn-group">
 					<button data-toggle="dropdown" class="btn btn-small dropdown-toggle"><span class="icon-cog"></span> <span class="caret"></span>

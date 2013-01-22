@@ -55,8 +55,8 @@
     <r:script>
       customer.value('config', {
 				url : "${resource(file : '/application')}",
-        endpoint : "${params.endpoint}${params.path}",
-        token : "${params.token}"
+        endpoint : "${session.access.customer.endpoint}",
+        token : "${session.access.token}"
       })
       angular.bootstrap(document,['customer']);
     </r:script>

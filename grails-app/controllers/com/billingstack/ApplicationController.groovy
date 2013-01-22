@@ -50,11 +50,11 @@ class ApplicationController {
             .execute()
             .get()
           if(response.statusCode == 200) {
-            def access = slurper.parseText(response.responseBody)
-						if(access.customer) {
-							redirect(action : "customer", params : [endpoint : access.endpoint, token : access.token.id])
+            session.access = slurper.parseText(response.responseBody)
+						if(session.access.customer) {
+							redirect(action : "customer")
 						} else {
-							redirect(action : "merchant", params : [endpoint : access.endpoint, token : access.token.id])
+							redirect(action : "merchant")
 						}
           } else {
             throw new RuntimeException(slurper.parseText(response.responseBody).error)
@@ -73,8 +73,10 @@ class ApplicationController {
 			
 		}
 		
-		def customer() {
-			
+		def customer(String customer) {
+			if(!session.access.customer) {
+				session.access.customer = [endpoint : "${session.access.merchant.endpoint}/customers/${customer}" ]
+			}
 		}
 
 }
