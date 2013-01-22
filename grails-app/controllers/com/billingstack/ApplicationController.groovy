@@ -49,7 +49,6 @@ class ApplicationController {
             .setBody(builder.toString())
             .execute()
             .get()
-            println response.responseBody
           if(response.statusCode == 200) {
             def access = slurper.parseText(response.responseBody)
 						if(access.customer) {
