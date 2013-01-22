@@ -20,7 +20,6 @@
   </head>
   <body>
     <g:layoutBody/>
-    <g:javascript library="application"/>
     <r:layoutResources />
   </body>
 </html>

@@ -111,12 +111,14 @@
 		<script type="text/ng-template" id="templates/customer_transaction">
       <g:render template="/templates/customer_transaction" />
     </script>
+		<g:javascript library="customer"/>
     <r:script>
-      merchant.value('config', {
-        endpoint : "${params.endpoint}",
+      customer.value('config', {
+				url : "${resource(file : '/application')}",
+        endpoint : "${params.endpoint}${params.path}",
         token : "${params.token}"
       })
-      angular.bootstrap(document,['merchant']);
+      angular.bootstrap(document,['customer']);
     </r:script>
   </body>
 </html>

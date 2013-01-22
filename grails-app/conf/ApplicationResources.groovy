@@ -5,7 +5,14 @@ modules = {
     resource url:'billingstack/js/jquery-1.8.3.min.js'
     resource url:'bootstrap/js/bootstrap.min.js'
     resource url:'billingstack/js/angular.min.js'
-    resource url:'billingstack/ng/merchant.js'
 		resource url:'billingstack/js/bootstrap-notify.js'
+	}
+	merchant {
+    dependsOn 'application'
+    resource url:'billingstack/ng/merchant.js'
+	}
+	customer {
+    dependsOn 'application'
+    resource url:'billingstack/ng/customer.js'
 	}
 }

@@ -52,7 +52,11 @@ class ApplicationController {
             println response.responseBody
           if(response.statusCode == 200) {
             def access = slurper.parseText(response.responseBody)
-            redirect(controller : "merchant", params : [endpoint : access.endpoint, token : access.id])
+						if(access.customer) {
+							redirect(action : "customer", params : [endpoint : access.endpoint, token : access.token.id])
+						} else {
+							redirect(action : "merchant", params : [endpoint : access.endpoint, token : access.token.id])
+						}
           } else {
             throw new RuntimeException(slurper.parseText(response.responseBody).error)
           }
@@ -65,5 +69,13 @@ class ApplicationController {
     def signOut() {
       redirect(action : "signIn")
     }
+
+		def merchant() {
+			
+		}
+		
+		def customer() {
+			
+		}
 
 }
