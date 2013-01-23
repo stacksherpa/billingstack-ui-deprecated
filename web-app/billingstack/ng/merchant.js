@@ -378,7 +378,7 @@ var merchant = angular.module('merchant',[])
         }
       } else {
         $scope.searching = true;
-        $http.get($scope.config.endpoint+'/invoices/'+$scope.params.subscription)
+        $http.get($scope.config.endpoint+'/invoices/'+$scope.params.invoice)
           .success(function(data) {
             $scope.item = data;
             $scope.searching = false;

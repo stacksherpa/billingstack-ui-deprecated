@@ -13,12 +13,12 @@
           <li><a href="${createLink(controller : 'application', action : 'signOut')}"><i class="icon-off"></i> Sign Out</a></li>
         </ul>
         <ul class="nav">
-          <li><a href="${createLink(action : 'merchant', params : [endpoint : params.endpoint, token : params.token])}#/customers">Customers</a></li>
-          <li><a href="${createLink(action : 'merchant', params : [endpoint : params.endpoint, token : params.token])}#/products">Products</a></li>
-          <li><a href="${createLink(action : 'merchant', params : [endpoint : params.endpoint, token : params.token])}#/plans">Plans</a></li>
-          <li><a href="${createLink(action : 'merchant', params : [endpoint : params.endpoint, token : params.token])}#/subscriptions">Subscriptions</a></li>
-          <li><a href="${createLink(action : 'merchant', params : [endpoint : params.endpoint, token : params.token])}#/invoices">Invoices</a></li>
-          <li><a href="${createLink(action : 'merchant', params : [endpoint : params.endpoint, token : params.token])}#/transactions">Transactions</a></li>
+          <li><a href="${createLink(action : 'merchant')}#/customers">Customers</a></li>
+          <li><a href="${createLink(action : 'merchant')}#/products">Products</a></li>
+          <li><a href="${createLink(action : 'merchant')}#/plans">Plans</a></li>
+          <li><a href="${createLink(action : 'merchant')}#/subscriptions">Subscriptions</a></li>
+          <li><a href="${createLink(action : 'merchant')}#/invoices">Invoices</a></li>
+          <li><a href="${createLink(action : 'merchant')}#/transactions">Transactions</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

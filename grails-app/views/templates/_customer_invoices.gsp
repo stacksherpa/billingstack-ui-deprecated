@@ -17,7 +17,6 @@
       <tr>
         <th class="fit"><br /></th>
         <th>ID</th>
-        <th>Customer</th>
         <th>Subtotal</th>
         <th>Tax Percentage</th>
         <th>Tax Total</th>
@@ -29,7 +28,6 @@
       <tr data-ng-repeat="item in items">
         <td><input type="checkbox" /></td>
         <td><a href="#/invoices/{{item.id}}">{{item.id}}</a></td>
-        <td>{{item.customer.id}}</td>
         <td>{{item.subtotal}}</td>
         <td>{{item.tax_percentage}}</td>
         <td>{{item.tax_total}}</td>
