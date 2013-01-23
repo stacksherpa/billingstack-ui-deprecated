@@ -25,8 +25,8 @@
     <tbody>
       <tr data-ng-repeat="item in items">
 	      <td><input type="checkbox" /></td>
-	      <td><a href="#/customers/{{params.customer}}/transactions/{{item.id}}">{{item.id}}</a></td>
-				<td><a href="#/customers/{{params.customer}}/invoices/{{item.invoice.id}}">{{item.invoice.id}}</a></td>
+	      <td><a href="#/transactions/{{item.id}}">{{item.id}}</a></td>
+				<td><a href="#/invoices/{{item.invoice.id}}">{{item.invoice.id}}</a></td>
 				<td>{{item.amount}}</td>
 				<td>{{item.status}}</td>
 	    </tr>
