@@ -27,6 +27,22 @@ var merchant = angular.module('merchant',[])
     $scope.params = $routeParams;
     $scope.config = config;
   }])
+	.controller('SettingsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      $scope.searching = true;
+      $http.get($scope.config.endpoint+'/metadata')
+        .success(function(data) {
+          $scope.item = data;
+          $scope.searching = false;
+        })
+    }
+		$scope.save = function() {
+      $http.put($scope.config.endpoint+'/metadata', $scope.item)
+        .success(function(data) {
+        })
+    }
+    $scope.refresh()
+  }])
   .controller('PaymentGatewaysCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {
       $scope.searching = true;
