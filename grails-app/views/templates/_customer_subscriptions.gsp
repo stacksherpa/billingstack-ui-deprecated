@@ -32,7 +32,7 @@
 						<li class="divider"></li>
 						<li><a ng-click="bill()"><i class="icon-certificate"></i> Bill Now</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+						<li><a ng-click="remove()"><i class="icon-remove"></i> Delete</a></li>
 					</ul>
 				</td>
 	    </tr>

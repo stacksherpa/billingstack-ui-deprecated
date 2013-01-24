@@ -514,6 +514,12 @@ var merchant = angular.module('merchant',[])
               console.log(data)
             })
         }
+				scope.remove = function() {
+          $http.delete(scope.config.endpoint+'/customers/'+scope.item.customer.id+'/subscriptions/'+scope.item.id)
+            .success(function(data) {
+              scope.refresh();
+            })
+        }
       }
     }
   }])
@@ -534,6 +540,19 @@ var merchant = angular.module('merchant',[])
       link : function(scope, element, attrs) {
 				scope.remove = function() {
 					$http.delete(scope.config.endpoint+'/plans/'+scope.item.id)
+	          .success(function(data) {
+	            scope.refresh();
+	          })
+				}
+      }
+    }
+  }])
+	.directive('product', ['$http',function($http) {
+    return {
+      restrict : "C",
+      link : function(scope, element, attrs) {
+				scope.remove = function() {
+					$http.delete(scope.config.endpoint+'/products/'+scope.item.id)
 	          .success(function(data) {
 	            scope.refresh();
 	          })

@@ -311,15 +311,21 @@ var customer = angular.module('customer',[])
       restrict : "C",
       link : function(scope, element, attrs) {
         scope.bill = function() {
-          $http.post(scope.config.endpoint+'/customers/'+scope.item.customer.id+'/subscriptions/'+scope.item.id+'/bill')
+          $http.post(scope.config.endpoint+'/subscriptions/'+scope.item.id+'/bill')
             .success(function(data) {
               console.log(data)
+            })
+        }
+        scope.remove = function() {
+          $http.delete(scope.config.endpoint+'/subscriptions/'+scope.item.id)
+            .success(function(data) {
+              scope.refresh();
             })
         }
       }
     }
   }])
-	.directive('plans', ['$http',function($http) {
+  .directive('plans', ['$http',function($http) {
     return {
       restrict : "C",
       link : function(scope, element, attrs) {
@@ -327,6 +333,32 @@ var customer = angular.module('customer',[])
           .success(function(data) {
             scope.plans = data;
           })
+      }
+    }
+  }])
+  .directive('user', ['$http',function($http) {
+    return {
+      restrict : "C",
+      link : function(scope, element, attrs) {
+        scope.remove = function() {
+          $http.delete(scope.config.endpoint+'/users/'+scope.item.id)
+            .success(function(data) {
+              scope.refresh();
+            })
+        }
+      }
+    }
+  }])
+	.directive('invoice', ['$http',function($http) {
+    return {
+      restrict : "C",
+      link : function(scope, element, attrs) {
+        scope.remove = function() {
+          $http.delete(scope.config.endpoint+'/invoices/'+scope.item.id)
+            .success(function(data) {
+              scope.refresh();
+            })
+        }
       }
     }
   }])

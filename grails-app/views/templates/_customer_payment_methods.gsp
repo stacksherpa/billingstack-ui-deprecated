@@ -30,7 +30,15 @@
 				<td>{{item.type}}</td>
 				<td>{{item.number}}</td>
 				<td>{{item.expiration}}</td>
-				<td></td>
+				<td class="btn-toolbar">
+					<div class="btn-group">
+						<button data-toggle="dropdown" class="btn btn-small dropdown-toggle"><span class="icon-cog"></span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu pull-right">
+							<li><a ng-click="remove()"><i class="icon-remove"></i> Delete</a></li>
+						</ul>
+					</div>
+				</td>
 	    </tr>
     </tbody>
   </table>

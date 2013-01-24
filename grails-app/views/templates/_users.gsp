@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="item in items">
+      <tr data-ng-repeat="item in items" class="user">
 	      <td><input type="checkbox" /></td>
 	      <td><a href="#/users/{{item.id}}">{{item.username}}</a></td>
 	    </tr>

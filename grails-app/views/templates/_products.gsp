@@ -20,16 +20,26 @@
 			<th>Type</th>
 			<th>Measure</th>
 			<th>Description</th>
+			<th class="fit"><br /></th>
     </tr>
   </thead>
   <tbody>
-    <tr data-ng-repeat="item in items">
+    <tr data-ng-repeat="item in items" class="product">
       <td><input type="checkbox" /></td>
       <td><a href="#/products/{{item.id}}">{{item.name}}</a></td>
 			<td>{{item.source}}</td>
 			<td>{{item.type}}</td>
 			<td>{{item.measure}}</td>
 			<td>{{item.description}}</td>
+			<td class="btn-toolbar">
+				<div class="btn-group">
+					<button data-toggle="dropdown" class="btn btn-small dropdown-toggle"><span class="icon-cog"></span> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu pull-right">
+						<li><a ng-click="remove()"><i class="icon-remove"></i> Delete</a></li>
+					</ul>
+				</div>
+			</td>
     </tr>
   </tbody>
 </table>
