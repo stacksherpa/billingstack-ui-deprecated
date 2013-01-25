@@ -1,8 +1,4 @@
-<div class="page-header">
-  <h1>Customer <small>Transactions</small></h1>
-</div>
-<g:applyLayout name="customer">
-  <div class="well">
+	<div class="well">
     <div class="row-fluid">
       <div class="pull-left">
         <a href="#/transactions/0" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Transaction</a>
@@ -33,4 +29,3 @@
     </tbody>
   </table>
   <g:render template="/templates/pagination" />
-</g:applyLayout>

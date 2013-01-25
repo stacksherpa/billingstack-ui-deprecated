@@ -1,7 +1,3 @@
-<div class="page-header">
-  <h1>Customer <small>Payment Method</small></h1>
-</div>
-<g:applyLayout name="customer">
 <div class="well">
   <form data-ng-submit="save()">
 		<fieldset>
@@ -37,4 +33,3 @@
     </div>
 	</form>
 </div>
-</g:applyLayout>

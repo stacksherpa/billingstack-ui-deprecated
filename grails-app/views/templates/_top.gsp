@@ -9,7 +9,7 @@
       <a href="#" class="brand">BillingStack</a>
       <div class="nav-collapse collapse">
         <ul class="nav pull-right">
-          <li><a href="${createLink(action : 'merchant')}#/users"><i class="icon-cog"></i> Settings</a></li>
+          <li><a href="${createLink(action : 'settings')}#/users"><i class="icon-cog"></i> Settings</a></li>
           <li><a href="${createLink(controller : 'application', action : 'signOut')}"><i class="icon-off"></i> Sign Out</a></li>
         </ul>
         <ul class="nav">

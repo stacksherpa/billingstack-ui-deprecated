@@ -1,14 +1,13 @@
-<div class="page-header">
-  <h1>Merchant <small>Settings</small></h1>
-</div>
-<g:applyLayout name="settings">
 <div class="well">
   <form data-ng-submit="save()">
 		<fieldset>
       <legend>Settings</legend>
+			<div class="row-fluid">
+        <label class="checkbox"><input type="checkbox" data-ng-model="item.push_notifications_enabled" /> Enable Push Notifications</label>
+      </div>
       <div class="row-fluid">
-        <label for="username">Push Notifications Endpoint</label>
-        <input id="username" type="text" data-ng-model="item.push_notifications_endpoint" class="span12" />
+        <label for="push_notifications_endpoint">Push Notifications Endpoint</label>
+        <input id="push_notifications_endpoint" type="text" data-ng-model="item.push_notifications_endpoint" class="span12" />
       </div>
     </fieldset>
     <div class="row-fluid">
@@ -21,4 +20,3 @@
     </div>
   </form>
 </div>
-</g:applyLayout>

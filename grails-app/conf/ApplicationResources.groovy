@@ -11,6 +11,10 @@ modules = {
     dependsOn 'application'
     resource url:'billingstack/ng/merchant.js'
 	}
+	settings {
+    dependsOn 'application'
+    resource url:'billingstack/ng/settings.js'
+	}
 	customer {
     dependsOn 'application'
     resource url:'billingstack/ng/customer.js'

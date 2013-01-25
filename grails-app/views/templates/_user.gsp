@@ -1,10 +1,6 @@
-<div class="page-header">
-  <h1>Merchant <small>User</small></h1>
-</div>
-<g:applyLayout name="settings">
 <div class="well">
   <form data-ng-submit="save()">
-		<fieldset>
+    <fieldset>
       <legend>User</legend>
       <div class="row-fluid">
         <label for="username">Username</label>
@@ -25,4 +21,3 @@
     </div>
   </form>
 </div>
-</g:applyLayout>

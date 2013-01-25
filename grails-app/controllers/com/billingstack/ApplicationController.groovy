@@ -78,5 +78,9 @@ class ApplicationController {
 				session.access.customer = [endpoint : "${session.access.merchant.endpoint}/customers/${customer}" ]
 			}
 		}
+		
+		def settings() {
+			
+		}
 
 }

@@ -1,7 +1,3 @@
-<div class="page-header">
-  <h1>Merchant <small>Payment Gateway</small></h1>
-</div>
-<g:applyLayout name="settings">
 <div class="well">
   <form data-ng-submit="save()">
     <fieldset>
@@ -62,4 +58,3 @@
     </div>
   </form>
 </div>
-</g:applyLayout>
