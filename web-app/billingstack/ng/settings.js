@@ -1,7 +1,8 @@
 var settings = angular.module('settings',[])
   .config(["$routeProvider",function($routeProvider){
     $routeProvider
-      .when('/',{templateUrl : 'templates/settings', controller : "SettingsCtrl"})
+			.when('/',{templateUrl : 'templates/merchant', controller : "MerchantCtrl"})
+      .when('/settings',{templateUrl : 'templates/settings', controller : "SettingsCtrl"})
       .when('/users',{templateUrl : 'templates/users', controller : "UsersCtrl"})
       .when('/users/:user',{templateUrl : 'templates/user', controller : "UserCtrl"})
       .when('/payment-gateways',{templateUrl : 'templates/payment_gateways', controller : "PaymentGatewaysCtrl"})
@@ -13,6 +14,22 @@ var settings = angular.module('settings',[])
   .controller('BillingStackCtrl', ['$scope','$routeParams','$location','config', function($scope,$routeParams,$location,config) {
     $scope.params = $routeParams;
     $scope.config = config;
+  }])
+	.controller('MerchantCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
+    $scope.refresh = function() {
+      $scope.searching = true;
+      $http.get($scope.config.endpoint)
+        .success(function(data) {
+          $scope.item = data;
+          $scope.searching = false;
+        })
+    }
+		$scope.save = function() {
+      $http.put($scope.config.endpoint, $scope.item)
+        .success(function(data) {
+        })
+    }
+    $scope.refresh()
   }])
 	.controller('SettingsCtrl', ['$scope','$location','$http',function($scope,$location,$http) {
     $scope.refresh = function() {

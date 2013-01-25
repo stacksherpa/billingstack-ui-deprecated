@@ -15,7 +15,7 @@
           <div class="span3">
             <div class="well">
               <ul class="nav">
-                <li><a href="#/settings"><i class="icon-pencil"></i> Edit</a></li>
+                <li><a href="#/"><i class="icon-pencil"></i> Edit</a></li>
                 <li><a href="#/settings"><i class="icon-cog"></i> Settings</a></li>
                 <li><a href="#/users"><i class="icon-user"></i> Users</a></li>
                 <li><a href="#/payment-gateways"><i class="icon-leaf"></i> Payment Gateways</a></li>
@@ -30,6 +30,9 @@
       </div>
     </div>
     <div class='notifications top-right'></div>
+		<script type="text/ng-template" id="templates/merchant">
+      <g:render template="/templates/merchant" />
+    </script>
     <script type="text/ng-template" id="templates/settings">
       <g:render template="/templates/settings" />
     </script>
